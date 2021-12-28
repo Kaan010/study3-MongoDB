@@ -22,7 +22,8 @@ public class UserService {
     }
 
     public User findById(String id) {
-        return userDao.findById(id).orElse(null);
+        return userDao.findById(id)
+                .orElse(null);
     }
 
     public User save(User user) {

@@ -5,9 +5,7 @@ import com.example.mongodbstudy.model.User;
 import com.example.mongodbstudy.service.ProductCommentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +25,28 @@ public class ProductCommentController {
                 productCommentService.findAll(),
                 HttpStatus.OK
         );
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductComment> findById(@PathVariable String id) {
+        return new ResponseEntity<>(
+                productCommentService.findById(id),
+                HttpStatus.OK
+        );
+    }
+
+    @PostMapping("")
+    public ResponseEntity<ProductComment> save(@RequestBody ProductComment productComment) {
+        return new ResponseEntity<>(
+                productCommentService.save(productComment),
+                HttpStatus.CREATED
+        );
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<Void> delete(@PathVariable String productCommentId) {
+        productCommentService.delete(productCommentId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
