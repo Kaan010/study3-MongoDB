@@ -1,9 +1,9 @@
-package com.example.mongodbstudy.dto;
+package com.example.mongodbstudy.dao;
 
 import com.example.mongodbstudy.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserDto extends MongoRepository<User, String> {
+public interface UserDao extends MongoRepository<User, String> {
 }
